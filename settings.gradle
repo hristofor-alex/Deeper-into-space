@@ -1,0 +1,4 @@
+rootProject.name='Deeper into space'
+include ':app'
+include ':networkmodule'
+include ':localdb'
