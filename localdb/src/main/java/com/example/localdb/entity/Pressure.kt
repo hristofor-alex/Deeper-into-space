@@ -5,12 +5,12 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 data class Pressure (
-    @ColumnInfo(name="average")
+    @ColumnInfo(name="pressureAverage")
     val average : Double,
-    @ColumnInfo(name="samplesOverTheSol")
+    @ColumnInfo(name="pressureSamplesOverTheSol")
     val samplesOverTheSol : Long,
-    @ColumnInfo(name="min")
+    @ColumnInfo(name="pressureMin")
     val min : Double,
-    @ColumnInfo(name="max")
+    @ColumnInfo(name="pressureMax")
     val max : Double
 )

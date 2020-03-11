@@ -5,12 +5,12 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 data class Temperature (
-    @ColumnInfo(name="average")
+    @ColumnInfo(name="temperatureAverage")
     val average : Double,
-    @ColumnInfo(name="samplesOverTheSol")
+    @ColumnInfo(name="temperatureSamplesOverTheSol")
     val samplesOverTheSol : Long,
-    @ColumnInfo(name="min")
+    @ColumnInfo(name="temperatureMin")
     val min : Double,
-    @ColumnInfo(name="max")
+    @ColumnInfo(name="temperatureMax")
     val max : Double
 )

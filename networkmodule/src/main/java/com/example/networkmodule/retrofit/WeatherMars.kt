@@ -5,6 +5,5 @@ import com.example.networkmodule.retrofit.model.Sol
 import kotlinx.coroutines.flow.Flow
 
 interface WeatherMars {
-    suspend fun getWeather() : Flow<Sol>
-
+    fun getWeather() : Flow<List<Sol>>
 }

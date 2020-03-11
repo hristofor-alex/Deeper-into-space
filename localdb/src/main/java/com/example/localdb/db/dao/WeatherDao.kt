@@ -6,7 +6,8 @@ import androidx.room.Insert
 import androidx.room.Query
 import com.example.localdb.entity.Sol
 import kotlinx.coroutines.flow.Flow
-import java.sql.Date
+import java.util.*
+
 
 @Dao
 interface WeatherDao {

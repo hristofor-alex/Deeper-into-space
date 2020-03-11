@@ -8,7 +8,7 @@ import com.example.localdb.DbWeather
 import com.example.localdb.RoomWeather
 import com.example.localdb.entity.Sol
 import com.example.networkmodule.retrofit.RetrofitWeather
-import org.intellij.lang.annotations.Flow
+import kotlinx.coroutines.flow.Flow
 
 class WeatherRepository private constructor(context: Context){
     private val weatherDatabase: DbWeather = RoomWeather()
@@ -30,17 +30,10 @@ class WeatherRepository private constructor(context: Context){
         fun getInstance() = INSTANCE ?: throw IllegalStateException("Not init")
     }
 
-    fun getWeather() : Flow<List<Sol>> {
-
-        val sol = weatherDatabase.theBiggestSol()
-        sol.
-        if (sol == null)
-            weatherRetrofit.getWeather()
-
-
-
-
-      //  return weatherRetrofit.getWeather()
-    }
+//
+//    fun getWeather() : Flow<List<Sol>> {
+//
+//      //  return weatherRetrofit.getWeather()
+//    }
 
 }

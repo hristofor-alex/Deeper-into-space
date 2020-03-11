@@ -34,6 +34,11 @@ android {
 
         it.resValue 'string', "api_key", tmdbApiKey
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 

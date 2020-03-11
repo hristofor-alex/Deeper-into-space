@@ -7,9 +7,9 @@ import retrofit2.http.Query
 interface GetWeather {
 
     @GET("/insight_weather/")
-    suspend fun getWeather(
+    fun getWeather(
         @Query("api_key") apiKey: String,
         @Query("feedtype") feedtype: String,
         @Query("ver") ver: String
-    ): String
+    ): Call<String>
 }

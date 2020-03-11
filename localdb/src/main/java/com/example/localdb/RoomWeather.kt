@@ -5,7 +5,8 @@ import androidx.room.Room
 import com.example.localdb.entity.Sol
 import com.example.localdb.exeptions.DatabaseInitException
 import kotlinx.coroutines.flow.Flow
-import java.sql.Date
+import java.util.*
+
 
 class RoomWeather : DbWeather  {
 

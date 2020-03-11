@@ -4,7 +4,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.sql.Date
+import java.util.*
+
 
 @Entity(tableName = "Sol")
 data class Sol (

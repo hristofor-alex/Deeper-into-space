@@ -3,7 +3,7 @@ package com.example.localdb
 import android.content.Context
 import com.example.localdb.entity.Sol
 import kotlinx.coroutines.flow.Flow
-import java.sql.Date
+import java.util.*
 
 
 interface DbWeather {
