@@ -1,16 +1,17 @@
-package com.example.localdb
+package com.example.localdb.roomImpl
 
 import android.content.Context
 import androidx.room.Room
+import com.example.localdb.DbWeather
+import com.example.localdb.db.WeatherDatabase
 import com.example.localdb.entity.Sol
 import com.example.localdb.exeptions.DatabaseInitException
 import kotlinx.coroutines.flow.Flow
 import java.util.*
 
 
-class RoomWeather : DbWeather  {
-
-    var db: WeatherDatabase? = null
+class RoomWeather : DbWeather {
+    private var db: WeatherDatabase? = null
 
     override fun init(context: Context) {
         db = Room.databaseBuilder(context, WeatherDatabase::class.java, "weather_db").build()
