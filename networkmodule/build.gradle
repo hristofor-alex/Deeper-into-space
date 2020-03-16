@@ -48,6 +48,10 @@ def moshiLatestVersion = '1.9.2'
 def coroutinesLatestVersion = '1.3.3'
 
 dependencies {
+    //kodein
+    implementation "org.kodein.di:kodein-di-generic-jvm:6.3.2"
+    implementation "org.kodein.di:kodein-di-framework-android-x:6.3.2"
+
     //Moshi
     implementation 'com.squareup.moshi:moshi-kotlin:' + moshiLatestVersion
     kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshiLatestVersion")

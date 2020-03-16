@@ -40,6 +40,10 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:' + coroutinesLatestVersion
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:' + coroutinesLatestVersion
 
+    //kodein
+    implementation "org.kodein.di:kodein-di-generic-jvm:6.3.2"
+    implementation "org.kodein.di:kodein-di-framework-android-x:6.3.2"
+
     //Other
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

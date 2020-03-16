@@ -1,23 +1,33 @@
 package com.example.deeperintospace
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Activity
 import android.os.Bundle
-import com.example.networkmodule.retrofit.RetrofitWeather
+import androidx.appcompat.app.AppCompatActivity
+import com.example.deeperintospace.weatherRepository.WeatherRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.debounce
-import kotlinx.coroutines.launch
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.KodeinContext
+import org.kodein.di.android.kodein
+import org.kodein.di.generic.instance
+import org.kodein.di.generic.kcontext
 
-class MainActivity : AppCompatActivity() {
+
+class MainActivity : AppCompatActivity(), KodeinAware {
+    override val kodeinContext: KodeinContext<Activity> = kcontext(this)
+    override val kodein: Kodein by kodein()
 
     @FlowPreview
     @ExperimentalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val net = RetrofitWeather()
-        
+
+        kodeinTrigger?.trigger()
+
+        val repository: WeatherRepository by instance()
+
+        println()
     }
 }

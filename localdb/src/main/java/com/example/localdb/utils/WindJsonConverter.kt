@@ -7,7 +7,6 @@ import com.squareup.moshi.Types
 
 
 class WindJsonConverter {
-
     val moshi = Moshi.Builder().build()
     @TypeConverter
     fun windsToJson(wind : List<Wind>) : String {
