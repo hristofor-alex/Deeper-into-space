@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -26,18 +25,9 @@ android {
 
 }
 
-def room_version = "2.2.4"
-def moshiLatestVersion = '1.9.2'
-
 dependencies {
-    //Room
-    implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-    implementation "androidx.room:room-ktx:$room_version"
-
-    //Moshi
-    implementation 'com.squareup.moshi:moshi-kotlin:' + moshiLatestVersion
-    kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshiLatestVersion")
+    //Worker
+    implementation "androidx.work:work-runtime-ktx:$work_version"
 
     //Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:' + coroutinesLatestVersion
@@ -50,4 +40,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation project(path: ':networkmodule')
+    implementation project(path: ':localdb')
+
+
+
 }
