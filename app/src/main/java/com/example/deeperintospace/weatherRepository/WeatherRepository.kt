@@ -65,7 +65,7 @@ class WeatherRepository private constructor(val context: Context) {
         return weatherRetrofit.getWeather()
     }
 
-    fun insertSol(sol : DtoSol) {
+    suspend fun insertSol(sol : DtoSol) {
         weatherDatabase.insertSol(sol)
     }
 
