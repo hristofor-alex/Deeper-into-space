@@ -1,7 +1,6 @@
 package com.example.localdb
 
 import android.content.Context
-import android.util.Log
 import androidx.room.Room
 import com.example.localdb.entity.DtoSol
 import com.example.localdb.exeptions.DatabaseInitException
@@ -11,7 +10,7 @@ import java.util.*
 
 class RoomWeather : DbWeather  {
 
-    var db: WeatherDatabase? = null
+    private var db: WeatherDatabase? = null
 
     override fun init(context: Context) {
         db = Room.databaseBuilder(context, WeatherDatabase::class.java, "weather_database").build()
@@ -24,9 +23,7 @@ class RoomWeather : DbWeather  {
         throw DatabaseInitException("init db")
     }
 
-    override fun insertSol(sol: DtoSol) {
-        Log.i("inse", "before insert")
+    override suspend fun insertSol(sol: DtoSol) {
         db?.weatherDao()?.insertSol(sol)
-        Log.i("inse", "after insert")
     }
 }
