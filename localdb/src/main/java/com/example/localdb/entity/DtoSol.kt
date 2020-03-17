@@ -7,11 +7,9 @@ import androidx.room.PrimaryKey
 import java.util.*
 
 
-@Entity(tableName = "Sol")
-data class Sol (
-    @PrimaryKey(autoGenerate = true)
-    val id: Long,
-    @ColumnInfo(name = "sol")
+@Entity(tableName = "DtoSol")
+data class DtoSol (
+    @PrimaryKey()
     val sol: String,
     @Embedded
     val temperature: Temperature,

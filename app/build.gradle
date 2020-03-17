@@ -29,12 +29,17 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
 
 }
 
 def coroutinesLatestVersion = '1.3.3'
-
+def work_version = '2.3.3'
 dependencies {
+    //Worker
+    implementation "androidx.work:work-runtime-ktx:$work_version"
 
     //Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:' + coroutinesLatestVersion
