@@ -1,30 +1,29 @@
-package com.example.localdb.roomImpl
+package com.example.localdb
 
 import android.content.Context
 import androidx.room.Room
-import com.example.localdb.DbWeather
-import com.example.localdb.db.WeatherDatabase
-import com.example.localdb.entity.Sol
+import com.example.localdb.entity.DtoSol
 import com.example.localdb.exeptions.DatabaseInitException
 import kotlinx.coroutines.flow.Flow
 import java.util.*
 
 
-class RoomWeather : DbWeather {
+class RoomWeather : DbWeather  {
+
     private var db: WeatherDatabase? = null
 
     override fun init(context: Context) {
-        db = Room.databaseBuilder(context, WeatherDatabase::class.java, "weather_db").build()
+        db = Room.databaseBuilder(context, WeatherDatabase::class.java, "weather_database").build()
     }
 
-    override fun getSols(date: Date): Flow<List<Sol>> {
+    override fun getSols(date: Date): Flow<List<DtoSol>> {
         db?.let {
             return it.weatherDao().getSols(date)
         }
         throw DatabaseInitException("init db")
     }
 
-    override suspend fun insertSol(sol: Sol) {
+    override suspend fun insertSol(sol: DtoSol) {
         db?.weatherDao()?.insertSol(sol)
     }
 }
