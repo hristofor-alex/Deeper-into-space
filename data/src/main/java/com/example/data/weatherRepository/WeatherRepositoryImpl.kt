@@ -49,8 +49,8 @@ class WeatherRepositoryImpl (context: Context,
         return weatherRetrofit.getWeather()
     }
 
-    override suspend fun save(sol: DtoSol) {
-        weatherDatabase.insertSol(sol)
+    override suspend fun save(vararg sol: DtoSol) {
+        weatherDatabase.insertSol(*sol)
     }
 
 }

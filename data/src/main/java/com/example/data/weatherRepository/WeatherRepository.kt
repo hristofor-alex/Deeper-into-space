@@ -8,5 +8,5 @@ interface WeatherRepository {
 
     fun getWeatherFromLastTenDays(): Flow<List<DtoSol>>
     suspend fun remoteRequestWeather(): List<Sol>
-    suspend fun save(sol: DtoSol)
+    suspend fun save(vararg sol: DtoSol)
 }

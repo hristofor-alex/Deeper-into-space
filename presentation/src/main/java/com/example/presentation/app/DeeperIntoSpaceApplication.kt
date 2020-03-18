@@ -1,6 +1,7 @@
 package com.example.presentation.app
 
 import android.app.Application
+import android.util.Log
 import androidx.work.NetworkType
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager

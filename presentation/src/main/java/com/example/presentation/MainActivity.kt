@@ -11,21 +11,19 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
-import org.kodein.di.KodeinContext
-import org.kodein.di.generic.kcontext
+import org.kodein.di.KodeinTrigger
 import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
 
 class MainActivity : AppCompatActivity() , KodeinAware{
-
-    override val kodeinContext: KodeinContext<Activity> = kcontext(this)
     override val kodein: Kodein by kodein()
+    override val kodeinTrigger = KodeinTrigger()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        kodeinTrigger.trigger()
 
-        kodeinTrigger?.trigger()
         val repository  by instance<WeatherRepository>()
         GlobalScope.launch {
             repository.getWeatherFromLastTenDays().collect { weather ->

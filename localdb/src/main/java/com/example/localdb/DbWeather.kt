@@ -8,5 +8,5 @@ import java.util.*
 interface DbWeather {
     fun init(context:Context)
     fun getSols(date : Date): Flow<List<DtoSol>>
-    suspend fun insertSol(sol: DtoSol)
+    suspend fun insertSol(vararg sol: DtoSol)
 }

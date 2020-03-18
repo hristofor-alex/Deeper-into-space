@@ -23,7 +23,7 @@ class RoomWeather : DbWeather  {
         throw DatabaseInitException("init db")
     }
 
-    override suspend fun insertSol(sol: DtoSol) {
-        db?.weatherDao()?.insertSol(sol)
+    override suspend fun insertSol(vararg sol: DtoSol) {
+        db?.weatherDao()?.insertSol(*sol)
     }
 }

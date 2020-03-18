@@ -7,15 +7,7 @@ import com.example.networkmodule.retrofit.net.GetWeather
 import com.example.networkmodule.retrofit.net.WeatherClientInstance
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.callbackFlow
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class RetrofitWeather : WeatherMars {
     private val apiKey = BuildConfig.NASA_API_KEY
