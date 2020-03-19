@@ -1,10 +1,8 @@
-package com.example.localdb.entity
+package com.example.localdb.dto
 
 import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 
-data class Temperature (
+data class DtoTemperature (
     @ColumnInfo(name="temperatureAverage")
     val average : Double,
     @ColumnInfo(name="temperatureSamplesOverTheSol")

@@ -1,10 +1,10 @@
-package com.example.networkmodule.retrofit.entity
+package com.example.networkmodule.retrofit.dto
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class WindSpeed(
+data class NetWindSpeed(
     @Json(name = "av")
     val average: Double,
     @Json(name = "ct")

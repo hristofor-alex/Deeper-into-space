@@ -1,41 +1,38 @@
 package com.example.data.weatherRepository.utils
 
-import com.example.localdb.entity.Temperature
-import com.example.networkmodule.retrofit.entity.Pressure
-import com.example.networkmodule.retrofit.entity.Wind
-import com.example.networkmodule.retrofit.entity.WindDirections
-import com.example.networkmodule.retrofit.entity.WindSpeed
+import com.example.localdb.dto.*
+import com.example.networkmodule.retrofit.dto.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-fun com.example.networkmodule.retrofit.entity.Temperature.toDto() = Temperature(
+fun NetTemperature.toDto() = DtoTemperature(
     average,
     samplesOverTheSol,
     min,
     max
 )
 
-fun Pressure.toDto() = com.example.localdb.entity.Pressure(
+fun NetPressure.toDto() = DtoPressure(
     average,
     samplesOverTheSol,
     min,
     max
 )
 
-fun WindSpeed.toDto() = com.example.localdb.entity.WindSpeed(
+fun NetWindSpeed.toDto() = DtoWindSpeed(
     average,
     samplesOverTheSol,
     min,
     max
 )
 
-fun Wind.toDto() = com.example.localdb.entity.Wind(
+fun NetWind.toDto() = DtoWind(
     compassPoint,
     samplesNumber
 )
 
-fun WindDirections.toDto() = com.example.localdb.entity.WindDirections(
-    kotlin.collections.listOf(
+fun NetWindDirections.toDto() = DtoWindDirections(
+    listOf(
         direction0?.toDto(),
         direction1?.toDto(),
         direction2?.toDto(),
@@ -58,3 +55,5 @@ fun WindDirections.toDto() = com.example.localdb.entity.WindDirections(
 fun String.toDate() : Date {
     return SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").parse(this)
 }
+
+

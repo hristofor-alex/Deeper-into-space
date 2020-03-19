@@ -47,7 +47,7 @@ dependencies {
 
     implementation project(path: ':networkmodule')
     implementation project(path: ':localdb')
-
+    implementation project(path: ':domain')
 
 
 }

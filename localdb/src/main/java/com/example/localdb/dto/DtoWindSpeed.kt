@@ -1,10 +1,8 @@
-package com.example.localdb.entity
+package com.example.localdb.dto
 
 import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 
-data class WindSpeed (
+data class DtoWindSpeed (
     @ColumnInfo(name="windSpeedAverage")
     val average : Double,
     @ColumnInfo(name="windSpeedSamplesOverTheSol")

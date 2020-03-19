@@ -3,11 +3,11 @@ package com.example.data.weatherRepository.mappers
 
 import com.example.data.weatherRepository.utils.toDate
 import com.example.data.weatherRepository.utils.toDto
-import com.example.localdb.entity.DtoSol
-import com.example.networkmodule.retrofit.model.Sol
+import com.example.localdb.dto.DtoSol
+import com.example.networkmodule.retrofit.model.NetSol
 
-class SolMapper : Mapper<Sol, DtoSol> {
-    override  fun map(from: Sol): DtoSol {
+class DtoNetToLocalMapper : Mapper<NetSol, DtoSol> {
+    override  fun map(from: NetSol): DtoSol {
         return DtoSol(
             sol = from.sol,
             temperature = from.temperature.toDto(),

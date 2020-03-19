@@ -1,6 +1,6 @@
 package com.example.localdb.utils
 
-import com.example.localdb.entity.Wind
+import com.example.localdb.dto.DtoWind
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -9,13 +9,13 @@ class WindJsonConverterTest {
 
     @Test
     fun windsToJson() {
-        val windN = Wind("n", 23)
-        val windW = Wind("w", 13)
-        val windE = Wind("e", 33)
-        val windS = Wind("s", 43)
+        val windN = DtoWind("n", 23)
+        val windW = DtoWind("w", 13)
+        val windE = DtoWind("e", 33)
+        val windS = DtoWind("s", 43)
 
         val obj = WindJsonConverter()
-        val list = listOf<Wind>(windN, windW, windE, windS)
+        val list = listOf<DtoWind>(windN, windW, windE, windS)
         val s = obj.windsToJson(list)
         val list2 = obj.jsonToWinds(s)
         assertEquals(windN.compassPoint, list2[0].compassPoint)

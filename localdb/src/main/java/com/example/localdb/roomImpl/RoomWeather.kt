@@ -2,7 +2,7 @@ package com.example.localdb
 
 import android.content.Context
 import androidx.room.Room
-import com.example.localdb.entity.DtoSol
+import com.example.localdb.dto.DtoSol
 import com.example.localdb.exeptions.DatabaseInitException
 import kotlinx.coroutines.flow.Flow
 import java.util.*

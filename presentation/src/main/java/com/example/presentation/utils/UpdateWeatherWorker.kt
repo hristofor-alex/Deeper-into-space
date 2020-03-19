@@ -5,10 +5,8 @@ import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.example.data.weatherRepository.WeatherRepository
-import com.example.data.weatherRepository.kodein.KodeinRepositoryModule
-import com.example.data.weatherRepository.mappers.SolMapper
-import com.example.localdb.entity.DtoSol
-import org.kodein.di.Kodein
+import com.example.data.weatherRepository.mappers.DtoNetToLocalMapper
+import com.example.localdb.dto.DtoSol
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
@@ -26,7 +24,7 @@ class UpdateWeatherWorker(context: Context, params: WorkerParameters) : Coroutin
         if (sols.isNotEmpty()) {
             val dto = ArrayList<DtoSol>()
             sols.forEach {
-                dto.add(SolMapper().map(it))
+                dto.add(DtoNetToLocalMapper().map(it))
             }
             repository.save(*dto.toTypedArray())
             return Result.success()

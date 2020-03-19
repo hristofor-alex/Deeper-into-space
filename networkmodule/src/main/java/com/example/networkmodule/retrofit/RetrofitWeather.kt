@@ -1,8 +1,8 @@
 package com.example.networkmodule.retrofit
 
 import com.example.networkmodule.BuildConfig
-import com.example.networkmodule.retrofit.entity.SolKeys
-import com.example.networkmodule.retrofit.model.Sol
+import com.example.networkmodule.retrofit.dto.NetSolKeys
+import com.example.networkmodule.retrofit.model.NetSol
 import com.example.networkmodule.retrofit.net.GetWeather
 import com.example.networkmodule.retrofit.net.WeatherClientInstance
 import com.squareup.moshi.Moshi
@@ -15,7 +15,7 @@ class RetrofitWeather : WeatherMars {
     private val version = "1.0"
 
     @ExperimentalCoroutinesApi
-    override suspend fun getWeather(): List<Sol> {
+    override suspend fun getWeather(): List<NetSol> {
 
         val weatherService = WeatherClientInstance.retrofit.create(GetWeather::class.java)
         val weatherJsonString = weatherService.getWeather(apiKey, feedType, version)
@@ -25,10 +25,10 @@ class RetrofitWeather : WeatherMars {
     }
 
 
-    private fun parseJsonToSol(responseString: String): ArrayList<Sol> {
+    private fun parseJsonToSol(responseString: String): ArrayList<NetSol> {
         val moshi = Moshi.Builder().build()
 
-        val solsKeyAdapter = moshi.adapter(SolKeys::class.java)
+        val solsKeyAdapter = moshi.adapter(NetSolKeys::class.java)
         val solsKey = solsKeyAdapter.fromJson(responseString)
 
         val mapAdapterType = Types.newParameterizedType(
@@ -40,9 +40,9 @@ class RetrofitWeather : WeatherMars {
         val mapAdapter = moshi.adapter<Map<String, Any>>(mapAdapterType)
         val solObjects = mapAdapter.fromJson(responseString)
 
-        val solAdapter = moshi.adapter(Sol::class.java)
+        val solAdapter = moshi.adapter(NetSol::class.java)
 
-        val solList = ArrayList<Sol>()
+        val solList = ArrayList<NetSol>()
         for (solName in solsKey?.sol_keys ?: ArrayList()) {
             val solJson = solObjects?.get(solName)
 
