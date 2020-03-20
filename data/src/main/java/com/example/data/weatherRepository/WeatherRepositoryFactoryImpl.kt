@@ -1,6 +1,7 @@
 package com.example.data.weatherRepository
 
 import android.content.Context
+import com.example.domain.repositories.WeatherRepository
 import com.example.localdb.DbWeather
 import com.example.networkmodule.retrofit.WeatherMars
 

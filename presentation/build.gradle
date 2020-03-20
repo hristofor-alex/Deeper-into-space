@@ -28,6 +28,7 @@ android {
     }
 }
 
+
 def retrofitLatestVersion = '2.7.2'
 
 
@@ -63,4 +64,5 @@ dependencies {
     implementation project(path: ':data')
     implementation project(path: ':networkmodule')
     implementation project(path: ':localdb')
+    implementation project(path: ':domain')
 }

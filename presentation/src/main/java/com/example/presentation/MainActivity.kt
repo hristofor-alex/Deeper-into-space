@@ -1,13 +1,11 @@
 package com.example.presentation
 
-import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.Settings
 import android.util.Log
-import com.example.data.weatherRepository.WeatherRepository
+import com.example.domain.repositories.WeatherRepository
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.launch
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -19,14 +17,16 @@ class MainActivity : AppCompatActivity() , KodeinAware{
     override val kodein: Kodein by kodein()
     override val kodeinTrigger = KodeinTrigger()
 
+    @InternalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         kodeinTrigger.trigger()
 
-        val repository  by instance<WeatherRepository>()
+
+
         GlobalScope.launch {
-            repository.getWeatherFromLastTenDays().collect { weather ->
+            repository.getWeather().collect { weather ->
                 weather.forEach {
                     Log.i("testPrint", it.sol)
                 }

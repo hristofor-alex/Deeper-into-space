@@ -1,10 +1,14 @@
 package com.example.data.weatherRepository
 
 import android.content.Context
+import com.example.data.weatherRepository.mappers.DtoToEntityMapper
+import com.example.data.weatherRepository.mappers.EntityToDtoMapper
+import com.example.data.weatherRepository.mappers.NetToEntityMapper
+import com.example.domain.entity.Sol
+import com.example.domain.repositories.WeatherRepository
 import com.example.localdb.DbWeather
 import com.example.localdb.dto.DtoSol
 import com.example.networkmodule.retrofit.WeatherMars
-import com.example.networkmodule.retrofit.model.NetSol
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -20,29 +24,25 @@ class WeatherRepositoryImpl(context: Context,
                             private val weatherRetrofit: WeatherMars)
     : WeatherRepository {
     private val scope = CoroutineScope(Dispatchers.IO)
-    private val mapper = com.example.data.weatherRepository.mappers.DtoToEntityMapper()
+    private val mapperDtoToEntity = DtoToEntityMapper()
+    private val mapperNetToEntity = NetToEntityMapper()
+    private val mapperEntityToDto = EntityToDtoMapper()
 
 
     init {
         weatherDatabase.init(context)
     }
 
-    companion object {
-        const val DAY_IN_MS = 1000 * 60 * 60 * 24;
+    override fun getWeather(date: Date): Flow<List<Sol>> {
+        return weatherDatabase.getSols(date).map { it.map { mapperDtoToEntity.map(it) } }
     }
 
-
-    override fun getWeatherFromLastTenDays(): Flow<List<com.example.domain.entity.Sol>> {
-        val tenDaysBeforeToday = Date(System.currentTimeMillis() - (10 * DAY_IN_MS))
-        return weatherDatabase.getSols(tenDaysBeforeToday).map { it.map { mapper.map(it) } }
+    override suspend fun remoteRequestWeather(): List<Sol> {
+        return weatherRetrofit.getWeather().map { mapperNetToEntity.map(it) }
     }
 
-    override suspend fun remoteRequestWeather(): List<NetSol> {
-        return weatherRetrofit.getWeather()
-    }
-
-    override suspend fun save(vararg sol: DtoSol) {
-        weatherDatabase.insertSol(*sol)
+    override suspend fun save(vararg sol: Sol) {
+        weatherDatabase.insertSol(*sol.map { mapperEntityToDto.map(it)}.toTypedArray())
     }
 
 }
