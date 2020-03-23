@@ -7,9 +7,11 @@ import com.example.localdb.exeptions.DatabaseInitException
 import kotlinx.coroutines.flow.Flow
 import java.util.*
 
-
+/**
+ * Room implementation of [DbWeather].
+ * Use [com.example.localdb.roomImpl.RoomWeatherFactory] to create [RoomWeather] instance.
+ */
 class RoomWeather : DbWeather  {
-
     private var db: WeatherDatabase? = null
 
     override fun init(context: Context) {
