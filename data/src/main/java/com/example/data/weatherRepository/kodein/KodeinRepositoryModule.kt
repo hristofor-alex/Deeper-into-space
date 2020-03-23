@@ -1,9 +1,9 @@
 package com.example.data.weatherRepository.kodein
 
 import android.content.Context
-import com.example.domain.repositories.WeatherRepository
 import com.example.data.weatherRepository.WeatherRepositoryFactory
 import com.example.data.weatherRepository.WeatherRepositoryFactoryImpl
+import com.example.domain.repositories.WeatherRepository
 import com.example.localdb.DbWeather
 import com.example.localdb.kodein.KodeinLocaldbModule
 import com.example.networkmodule.kodein.KodeinNetworkModule

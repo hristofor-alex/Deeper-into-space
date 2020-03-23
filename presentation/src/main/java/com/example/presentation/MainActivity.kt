@@ -22,16 +22,5 @@ class MainActivity : AppCompatActivity() , KodeinAware{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         kodeinTrigger.trigger()
-
-
-
-        GlobalScope.launch {
-            repository.getWeather().collect { weather ->
-                weather.forEach {
-                    Log.i("testPrint", it.sol)
-                }
-            }
-        }
-
     }
 }
