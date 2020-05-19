@@ -4,6 +4,7 @@ import android.content.Context
 import com.example.data.weatherRepository.WeatherRepositoryFactory
 import com.example.data.weatherRepository.WeatherRepositoryFactoryImpl
 import com.example.domain.repositories.WeatherRepository
+import com.example.domain.usecase.GetWeatherForLastTenDays
 import com.example.localdb.DbWeather
 import com.example.localdb.kodein.KodeinLocaldbModule
 import com.example.networkmodule.kodein.KodeinNetworkModule
@@ -26,5 +27,6 @@ class KodeinRepositoryModule(val context: Context) {
                 instance<WeatherMars>()
             )
         }
+        bind<GetWeatherForLastTenDays>() with singleton { GetWeatherForLastTenDays(instance()) }
     }
 }

@@ -22,5 +22,12 @@ class MainActivity : AppCompatActivity() , KodeinAware{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         kodeinTrigger.trigger()
+
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_place, ListFragment.newInstance(), null)
+            .commit()
     }
+
+
 }
